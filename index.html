@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab6.2_manhinh1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- <script src="https://uhchat.net/code.php?f=addb24"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .header {
+        width: 100%;
+        min-height: 100vh;
+        background-image: url('https://images.pexels.com/photos/8329933/pexels-photo-8329933.jpeg?_gl=1*1dkbe3q*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3NjkyNzA3ODEkbzEkZzEkdDE3NjkyNzA4MDMkajM4JGwwJGgw');
+        background-size: cover;
+        background-position: center;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+
+    }
+
+    .header h2 {
+        color: #3f5f4b;
+        font-family: 'Brush script MT', cursive;
+        letter-spacing: 0.1rem;
+        font-size: 1.6rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: 0.5s ease;
+        text-align: center;
+
+
+        animation: 1s title1 ease-in;
+    }
+
+    .header h2:hover {
+        background-color: rgba(255, 255, 255, 0.7)
+    }
+
+    .header h1 {
+        color: white;
+        font-weight: bold;
+        font-family: "Roboto";
+        letter-spacing: 0.2rem;
+        font-size: 4rem;
+        margin: 1rem;
+        text-align: center;
+
+
+        animation: 1.1s title1 ease-in;
+    }
+
+    .btn-header {
+        margin: 10px;
+        letter-spacing: 0.3rem;
+        padding: 10px 20px;
+        border: none;
+        background-color: #3f5f4b;
+        outline-offset: 2px;
+        outline: 3px solid #3f5f4b;
+        transition: 0.5s ease;
+
+
+        animation: 1.2s title1 ease-in;
+    }
+
+    .btn-header:hover {
+        background-color: #2f4738;
+        outline: 3px solid #2f4738;
+    }
+
+
+
+
+
+    /* Ẩn checkbox */
+    #menu-toggle {
+        display: none;
+    }
+
+
+    /* Nút menu */
+    .menu-button {
+        display: none;
+    }
+
+    /* .menu-button:hover {
+        background: #cbcbcbdf;
+    } */
+
+    /* Icon đóng mặc định ẩn */
+    .menu-button .close {
+        display: none;
+    }
+
+
+    .nav {
+
+
+        background: linear-gradient(90deg,
+                rgba(245, 242, 235, 0.9),
+                rgba(255, 255, 255, 0.75));
+        backdrop-filter: blur(4px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 4vh;
+        display: block;
+        z-index: 999;
+
+        padding: 10px;
+
+        animation: up_to_down 1s ease;
+    }
+
+
+    @keyframes up_to_down {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+            background-color: black;
+        }
+    }
+
+    /* List menu */
+    .nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .nav li {
+        padding: 15px 20px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: #2b2b2b;
+        font-weight: bold;
+        font-family: sans-serif;
+        transition: 0.25s ease;
+        font-size: 1rem;
+        display: inline-block;
+        position: relative;
+    }
+
+    .nav a:hover {
+        color: #7a6a2f;
+    }
+
+    .nav a::before {
+        content: "";
+        background: linear-gradient(90deg,
+                #7a6a2f,
+                #d4af37);
+        width: 0%;
+        height: 3px;
+        border-radius: 50px;
+        bottom: -6px;
+        left: 0;
+        position: absolute;
+        transition: 0.25s ease;
+    }
+
+    .nav a:hover::before {
+        width: 100%;
+    }
+
+    /* ===== CHECKED ===== */
+    /* #menu-toggle:checked~.nav {
+        transform: translateX(0);
+        opacity: 1;
+    } */
+
+
+    @media (max-width: 768px) {
+
+        /* Ẩn checkbox */
+        #menu-toggle {
+            display: none;
+        }
+
+
+        /* Nút menu */
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            font-size: 30px;
+            cursor: pointer;
+            background: #eeeeee89;
+            padding: 5px 12px;
+            border-radius: 5px;
+            display: block;
+
+            transition: all 0.25s ease;
+
+
+            animation: 1s menu-toggle-animation ease;
+        }
+
+        .menu-button span {
+            user-select: none;
+        }
+
+        ;
+
+        .menu-button:hover {
+            background: #cbcbcbdf;
+        }
+
+        /* Icon đóng mặc định ẩn */
+        .menu-button .close {
+            display: none;
+        }
+
+
+        .nav {
+            /* background-color: #e5e5e5dc; */
+            background: linear-gradient(90deg, rgb(181, 181, 181), rgba(255, 255, 255, 0.81));
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            display: block;
+            z-index: 999;
+
+            padding: 0;
+            padding-top: 80px;
+
+
+            transform: translateX(-100%);
+            transition: all 0.25s ease;
+            opacity: 0;
+        }
+
+        /* List menu */
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .nav li {
+            padding: 15px 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: 0.25s ease;
+        }
+
+        /* .nav a:hover {
+            color: rgb(48, 103, 52);
+        } */
+
+        /* ===== CHECKED ===== */
+        #menu-toggle:checked~.nav {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        #menu-toggle:checked~.menu-button .open {
+            display: none;
+        }
+
+        #menu-toggle:checked~.menu-button .close {
+            display: inline;
+        }
+    }
+
+    .img_manhinh2 {
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img_tachtra {
+        width: 300px;
+        overflow: hidden;
+        border: 4px solid #3f5f4b;
+        border-radius: 7px;
+    }
+
+
+    .about_img {
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        transition: all 0.25s linear;
+
+
+    }
+
+    .about_img:hover {
+        transform: scale(1.2);
+    }
+
+
+
+    @keyframes title1 {
+        0% {
+            opacity: 0;
+            transform: translateY(2rem);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+
+    @keyframes menu-toggle-animation {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    .features-body {
+        min-height: 50vh;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        font-family: "Roboto", sans-serif;
+        width: 90%;
+        margin: auto;
+    }
+
+    .feature-item {
+        min-height: 30vh;
+        padding: 1rem;
+        transition: 0.25s ease;
+        position: relative;
+    }
+
+    .feature-item:hover {
+        background-color: #3f5f4b;
+        transform: translateY(-5px);
+        box-shadow: 1px 1px 30px black;
+
+    }
+
+    .feature-item:hover>h2 {
+        color: #f6f1e7;
+    }
+
+    .feature-item:hover>p {
+        color: #e7e4da;
+    }
+
+    .feature-item::before {
+        content: "";
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg,
+                #7a6a2f,
+                #d4af37);
+        position: absolute;
+        transition: 0.4s ease;
+    }
+
+    .feature-item:hover::before {
+        width: 100%;
+    }
+
+    .feature-item h2 {
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: #3f5f4b;
+        line-height: 3rem;
+        font-weight: 500;
+    }
+
+    .feature-item p {
+        font-size: 1rem;
+        text-transform: capitalize;
+        color: black;
+        line-height: 1.5rem;
+        font-weight: 400;
+    }
+
+    .about-body {
+        min-height: 100vh;
+    }
+
+    .about {
+        padding: 8rem 5%;
+        display: grid;
+        justify-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+
+    }
+
+    .img-box {
+        height: 100%;
+        overflow: hidden;
+        border: 4px solid #3f5f4b;
+        border-radius: 20px;
+        background-color: #3f5f4b;
+        padding: 0 0 4rem 0;
+        overflow: hidden;
+        transition: 0.25s ease;
+    }
+
+    .img-box:hover {
+        transform: translateY(-0.3rem);
+    }
+
+    .img-box img {
+        height: 100%;
+        width: 400px;
+        background-color: #3f5f4b;
+        border-radius: 20px;
+        transition: 0.25s ease;
+    }
+
+    .img-box:hover img {
+        transform: scale(1.1);
+    }
+
+    .about h2 {
+        color: #3f5f4b;
+        font-family: "Brush Script MT", sans-serif;
+        letter-spacing: 0.2rem;
+        font-size: 2rem;
+    }
+
+    .about h1 {
+        color: black;
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.2rem;
+    }
+
+    .about p {
+        font-family: "Roboto", sans-serif;
+        font-size: 1rem;
+    }
+
+    .about a {
+        color: black;
+        text-decoration: none;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 0.2rem;
+        background-color: #3f5f4b;
+        padding: 1rem;
+        outline: 3px solid #3f5f4b;
+        outline-offset: 3px;
+    }
+
+    .about a,
+    .about p,
+    .about h2,
+    .about h1 {
+        margin: 3rem 0;
+    }
+
+    @media (max-width:768px) {
+        /* .about {
+            grid-template-columns: 100%;
+        } */
+    }
+
+    .product-bg {
+        background-color: rgb(48, 48, 48);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-check-out-title {
+        color: #3f5f4b;
+        font-family: "Grand Hotel", sans-serif;
+        text-transform: capitalize;
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .product-our-products-title {
+        color: white;
+        font-family: "Roboto", sans-serif;
+        text-transform: capitalize;
+        font-size: 3rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .product-content {
+        color: white;
+        font-family: "Roboto", sans-serif;
+        text-transform: capitalize;
+        font-size: 1rem;
+    }
+
+    .product-item {
+
+        width: 400px;
+        border-bottom: 3px solid #7a6a2f;
+        margin: 1rem;
+        min-height: 50vh;
+        box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.403);
+        overflow: hidden;
+        border-radius: 7px;
+        transition: 0.25s ease;
+    }
+
+    .product-item:hover {
+        transform: translateY(-0.3rem);
+    }
+
+    .product-item img {
+        width: 100%;
+        height: 300px;
+        border-radius: 7px;
+        transition: 0.25s ease;
+    }
+
+    .product-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .product-asm {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        /* justify-content: center;
+        align-items: center; */
+    }
+
+    @media (max-width:1200px) {
+        .product-asm {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .product-content {
+        color: white;
+        font-family: "Roboto", sans-serif;
+
+
+    }
+
+    .product-price {
+        font-family: "Grand Hotel";
+        color: #d4af37;
+        font-size: 1rem;
+        position: relative;
+    }
+
+    .product-name {
+        position: relative;
+        font-size: 1rem;
+        color: white;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+    }
+
+    .products p,
+    .products h1,
+    .products h2 {
+        padding: 10px 0;
+
+    }
+
+
+
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .explore-bg {
+        background-color: rgb(208, 208, 208);
+    }
+
+    .explore-explore-title {
+        color: #3f5f4b;
+        font-family: "Brush Script MT", sans-serif;
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .explore-our-services-title {
+        color: rgb(0, 0, 0);
+        font-family: "Roboto", sans-serif;
+        font-size: 3rem;
+        letter-spacing: 0.3rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .explore-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        /* flex-wrap: wrap; */
+        width: 70%;
+        margin: auto;
+        gap: 1rem;
+
+    }
+
+    @media (max-width:1200px) {
+        .explore-card {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .explore-card-item {
+        min-height: 60vh;
+        /* min-width: 50vw; */
+        outline: 3px solid #7a6a2f;
+        outline-offset: 3px;
+        border-radius: 15px;
+        margin: 3rem auto;
+        background-color: #3f5f4b;
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.579);
+        overflow: hidden;
+        transition: 0.25s ease;
+    }
+
+    .explore-card-item:hover {
+        transform: translateY(-0.3rem);
+    }
+
+    .explore-card-item img {
+        /* height: 60vh; */
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        transition: 0.25s ease;
+    }
+
+    .explore-card-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .explore-card-title {
+        color: white;
+        font-family: "Roboto", sans-serif;
+        padding: 10px 10px 20px 10px;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .btn-explore-read-more {
+        background-color: transparent;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        text-transform: capitalize;
+        border-radius: 7px;
+        padding: 10px 15px;
+        border: none;
+        border: 3px solid white;
+        position: relative;
+    }
+
+    /* 
+.explore-card-item a {
+    margin: auto;
+} */
+
+    .btn-explore-read-more-a {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .contact-asm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        margin: 3rem 0;
+        padding: 4rem;
+        background-color: aliceblue;
+    }
+
+    @media (max-width:768px) {
+
+        .contact-asm {
+            grid-template-columns: 100%;
+        }
+    }
+
+    .contact-asm-item {
+        max-width: 600px;
+        /* display: flex;
+    flex-direction: column; */
+        margin: 2rem 0;
+
+    }
+
+    .contact-asm-contact {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .contact-asm-input::placeholder {
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        font-size: 1rem;
+        color: rgb(19, 19, 80);
+    }
+
+    .contact-asm-input {
+        margin: 15px;
+        border: none;
+        background-color: aliceblue;
+        padding: 5px;
+        border-radius: 7px;
+    }
+
+    .contact-us-asm-title {
+        font-family: "Brush Script MT", sans-serif;
+        letter-spacing: 0.2rem;
+        font-size: 2rem;
+        color: rgb(110, 155, 169);
+        text-align: center;
+    }
+
+    .contact-asm-item-bg {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 5px 5px 10px;
+        border-radius: 7px;
+    }
+
+    .contact-asm-info h3 {
+        color: #3f5f4b;
+        font-size: 1.5rem;
+        font-family: "Brush Script MT", sans-serif;
+        letter-spacing: 0.2rem;
+    }
+
+    .contact-asm-info p {
+        color: rgb(0, 0, 0);
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+    }
+
+    .btn-contact-submit {
+        font-family: "Roboto", sans-serif;
+        padding: 15px;
+        color: white;
+        text-transform: uppercase;
+        background-color: #3f5f4b;
+        border: none;
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .explore-map-footer {
+        border: 6px solid #3f5f4b;
+        border-radius: 15px;
+        margin: 1rem 0 0;
+
+
+    }
+
+    .explore-map-bg {
+        background-color: aliceblue;
+        padding: 5rem 1rem;
+    }
+
+    .explore-map-fit {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        background-color: #7a6a2f;
+    }
+
+    .footer-explore {
+        background-color: rgb(38, 38, 38);
+        padding: 60px 10px 10px;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-explore a {
+        color: #ba8f2b;
+    }
+
+    .footer-explore .facebook-icon:hover {
+        color: rgb(81, 81, 255);
+    }
+
+    .footer-explore .instagram-icon:hover {
+        color: rgb(243, 80, 255);
+    }
+
+    .footer-explore .twitter-icon:hover {
+        color: white;
+    }
+
+    .rating {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comment-box {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes moveBg {
+        from {
+            background-position: 0% 50%;
+        }
+
+        to {
+            background-position: 100% 50%;
+        }
+    }
+
+    .boxbga {
+        background: linear-gradient(90deg,
+                #2b2b2b,
+                #d4af37,
+                #ba8f2b,
+                #2b2b2b);
+        /* background-size: 300% 100%; */
+        /* width: 100vw; */
+        height: 2vh;
+        background-size: 400% 100%;
+        animation: moveBg 3s linear infinite alternate;
+    }
+
+
+
+    .swiper-box {
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 70vh;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rating {
+        margin-top: 3rem;
+        background-color: white;
+        padding: 10rem;
+        min-height: 70vh;
+    }
+</style>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v24.0&appId=APP_ID"></script>
+    <input type="checkbox" name="" id="menu-toggle">
+    <label for="menu-toggle" class="menu-button">
+        <span class="open">☰</span>
+        <span class="close">&#x2715;</span>
+    </label>
+    <div class="nav">
+        <ul>
+            <li><a href="#">Feature</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Product</a></li>
+        </ul>
+    </div>
+
+
+
+    <div class="header">
+        <h2>Over one hundred falvors of tea</h2>
+        <h1>Specially crafted tea</h1>
+        <a href="#"><button class="btn-header">Explore</button></a>
+    </div>
+
+
+    <div class="boxbga"></div>
+    <div class="features-body">
+        <div id="feature">
+            <div class="features">
+                <div class="feature-item">
+                    <h2>made with love</h2>
+                    <p>Our tea is made with love, from the collection of the leaves to the brewing.</p>
+                </div>
+                <div class="feature-item">
+
+                    <h2>reflaxation</h2>
+                    <p>Set aside anxiety and relax after a hard day with a cup of hot tea in your hands.</p>
+
+                </div>
+                <div class="feature-item">
+                    <h2>energy</h2>
+                    <p>Our tea will energize you with vitamins and invigorate the rest of the day.</p>
+                </div>
+                <div class="feature-item ">
+                    <h2>family recipe</h2>
+                    <p>All our recipes are passed down from generation to generation for a long time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-body">
+        <div class="about">
+            <div class="img-box"><img
+                    src="https://images.pexels.com/photos/1831744/pexels-photo-1831744.jpeg?_gl=1*1tox4wx*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2NzQ2MTgkbzQkZzEkdDE3Njk2NzQ2NjYkajEyJGwwJGgw"
+                    alt=""></div>
+            <div>
+                <h2>about our</h2>
+                <h1>tea station</h1>
+                <p>Once upon a time we only had a couple of teapots and enjoyed tea only with our family. Over time, we
+                    were
+                    able to afford to buy a small tea plantation</p>
+                <p>
+                    Now we have a whole teahouse and we delight many people with dilicious and hot tea. We serve black
+                    long
+                    tea,
+                    relaxing green and jasmine tea, tea with spices and many others.
+                </p>
+                <a href="">learn more</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="product-bg">
+        <div class="product-asm">
+            <div class="product-item">
+                <h2 class="product-check-out-title ">check out</h2>
+                <h1 class="product-our-products-title">our products</h1>
+
+                <p class="product-content">Our assortment includes long tea, relaxing and invigorating green tea
+                    with
+                    spices,
+                    lemon juice, jasmine,
+                    cinnamon and anise milk tea and manu others.</p>
+                <a href="#"><button class="btn-header">INVENTORY</button></a>
+            </div>
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/1493080/pexels-photo-1493080.jpeg?_gl=1*8gmr1k*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2NzY4NjMkbzUkZzEkdDE3Njk2NzY4ODAkajQzJGwwJGgw"
+                    alt="">
+                <p class="product-name">Black long tea</p>
+                <p class="product-price">$ 3.99</p>
+            </div>
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/17536089/pexels-photo-17536089.jpeg?_gl=1*bw8c5c*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2ODI4NDckbzYkZzEkdDE3Njk2ODI5NDAkajU5JGwwJGgw"
+                    alt="">
+                <p class="product-name">Green tea with jasmine </p>
+                <p class="product-price">$ 4.99</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="explore-bg">
+        <div>
+            <h2 class="explore-explore-title">explore</h2>
+            <h1 class="explore-our-services-title">our services</h1>
+        </div>
+        <div class="explore-card">
+            <div class="explore-card-item">
+                <img src="https://images.pexels.com/photos/9461806/pexels-photo-9461806.jpeg?_gl=1*1ptun3z*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2ODI4NDckbzYkZzEkdDE3Njk2ODMwOTUkajQ1JGwwJGgw"
+                    alt="">
+                <h2 class="explore-card-title">custom recipe service</h2>
+                <div class="btn-explore-read-more-a">
+                    <a href="#"><button class="btn-explore-read-more">read more</button></a>
+                </div>
+            </div>
+            <div class="explore-card-item">
+                <img src="https://images.pexels.com/photos/1793035/pexels-photo-1793035.jpeg?_gl=1*upkiqu*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2ODI4NDckbzYkZzEkdDE3Njk2ODMxNzckajMyJGwwJGgw"
+                    alt="">
+                <h2 class="explore-card-title">home delivery service</h2>
+                <div class="btn-explore-read-more-a">
+                    <a href="#"><button class="btn-explore-read-more">read more</button></a>
+                </div>
+            </div>
+            <div class="explore-card-item">
+                <img src="https://images.pexels.com/photos/9461806/pexels-photo-9461806.jpeg?_gl=1*1ptun3z*_ga*ODc5NzQ1NzMwLjE3NjkyNzA3ODE.*_ga_8JE65Q40S6*czE3Njk2ODI4NDckbzYkZzEkdDE3Njk2ODMwOTUkajQ1JGwwJGgw"
+                    alt="">
+                <h2 class="explore-card-title">custom recipe service</h2>
+                <div class="btn-explore-read-more-a">
+                    <a href="#"><button class="btn-explore-read-more">read more</button></a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="rating">
+            <div class="fb-comments comment-box" data-href="http://127.0.0.1:5500/lab6_2/index.html" data-width=""
+                data-numposts="5"></div>
+            <div class="fb-share-button" data-href="http://127.0.0.1:5500/lab6_2/index.html" data-layout=""
+                data-size=""><a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5500%2Flab6_2%2Findex.html&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+            <div class="fb-like" data-href="http://127.0.0.1:5500/lab6_2/index.html" data-width="" data-layout=""
+                data-action="" data-size="" data-share="true"></div>
+        </div> -->
+
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/1.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+        <div class="explore-map-bg">
+            <div class="contact-asm">
+                <div class="contact-asm-item">
+                    <div class="contact-asm-info">
+                        <h3>address</h3>
+                        <p>523 n fairfax ave</p>
+                        <p>los angeles, ca 90048</p>
+                    </div>
+                    <div class="contact-asm-info">
+                        <h3>email</h3>
+                        <p>email@email.com</p>
+                    </div>
+                    <div class="contact-asm-info">
+                        <h3>telephone</h3>
+                        <p>+123 456 789</p>
+                    </div>
+                </div>
+                <div class="contact-asm-item contact-asm-item-bg">
+                    <form action="" class="contact-asm-contact">
+                        <h3 class="contact-us-asm-title">contact us</h3>
+                        <input type="text" name="" id="" placeholder="name" class="contact-asm-input">
+                        <input type="email" name="" id="" placeholder="email" class="contact-asm-input">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="message"
+                            class="contact-asm-input"></textarea>
+                        <input type="submit" value="Submit" class="btn-contact-submit">
+                    </form>
+                </div>
+
+            </div>
+            <div class="explore-map-footer">
+                <iframe class="explore-map-fit"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4426574722606!2d106.62322047451808!3d10.853897657761049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b6c59ba4c97%3A0x535e784068f1558b!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1768982937008!5m2!1svi!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-explore">
+            <a href=""><i class="fa-brands fa-facebook facebook-icon"></i></a>
+            <a href=""><i class="fa-brands fa-instagram instagram-icon"></i></a>
+            <a href=""><i class="fa-brands fa-square-x-twitter twitter-icon"></i></a>
+            <p>@NguyenLamGiaBao 2026</p>
+        </div>
+    </div>
+</body>
+
+</html>
